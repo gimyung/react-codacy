@@ -11,12 +11,10 @@ export default function Main() {
   const [data, setData] = useState([])
   
   useEffect(() => {
-    if(dummyData){
-      const newData = dummyData.every(item => item.id > 0)
-      console.log("Data is valid:", newData)
-      if(newData){
-        setData(dummyData);
-      }
+    const newData = dummyData.every(item => item.id > 0)
+    console.log("Data is valid:", newData)
+    if(newData){
+      setData(dummyData);
     }
   },[dummyData])
 
@@ -25,7 +23,7 @@ export default function Main() {
       <h1 className="text-3xl font-bold">Welcome to the Main Component!</h1>
       <p className="mt-4 text-lg">This is a simple example of a main component.</p>
       {
-        data && 
+        data.length > 0 && 
         <div className="mt-4">
           <h2 className="text-2xl font-semibold">Data:</h2>
           <ul className="list-disc list-inside">
